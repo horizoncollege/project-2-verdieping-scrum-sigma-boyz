@@ -40,7 +40,7 @@
     <div class="col-sm-4">
       <div class="w-100 p-5" style="background-color:#533E6D; height:350px;">
         <a href="RetrieveCode.php" style="text-decoration:none;">
-          <h1 class="fw-bold text-white" style="font-size:65px; margin-left: 60px; margin-top: 60px;">Retrieve Code</h1>
+          <h1 class="fw-bold text-white" style="font-size:60px; margin-left: 60px; margin-top: 60px;">Retrieve Code</h1>
         </a>
       </div>
     </div>

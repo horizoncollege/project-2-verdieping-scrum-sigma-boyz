@@ -24,13 +24,13 @@
                 <a class="fw-bold navbar-brand" href="index.php" style="color:white;">Total Code B.V.</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 650px;">
                     <li class="nav-item">
-                        <a class="fw-bold nav-link" href="SendCode.php" style="color:white;text-decoration:underline">Send Code</a>
+                        <a class="fw-bold nav-link" href="SendCode.php" style="color:white;">Send Code</a>
                     </li>
                     <li class="nav-item">
                         <a class="fw-bold nav-link" style="color:white;">|</a>
                     </li>
                     <li class="nav-item">
-                        <a class="fw-bold nav-link" href="RetrieveCode.php" style="color:white;">Retrieve Code</a>
+                        <a class="fw-bold nav-link" href="RetrieveCode.php" style="color:white; text-decoration:underline">Retrieve Code</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
                     <div class="col-sm-12">
                         <div class="form-floating">
                             <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label class="fw-bold" for="floatingTextarea" style="color:white;">Code</label>
+                            <label class="fw-bold"for="floatingTextarea" style="color:white;">Code</label>
                         </div>
                     </div>
                 </div>
@@ -70,9 +70,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="col-sm-12">
-                        <form action="SendConfirm.php">
-                            <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Post code</button>
-                        </form>
+                        <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
                     </div>
                 </div>
             </div>
