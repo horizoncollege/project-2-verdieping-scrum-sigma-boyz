@@ -5,7 +5,6 @@ USE project_pastebin;
 
 CREATE TABLE code_table (
 code_id int AUTO_INCREMENT PRIMARY KEY,
-code_sort varchar(20) NOT NULL,
 code_author varchar(15) NOT NULL,
 code_title varchar(30) NOT NULL,
 code_function LONGTEXT NOT NULL,
@@ -13,6 +12,6 @@ code LONGTEXT NOT NULL
 ) 
 AUTO_INCREMENT=1000;
 
-INSERT INTO code_table (code_sort, code_author, code_title, code_function, code)
+INSERT INTO code_table ( code_author, code_title, code_function, code)
 VALUES
-('php', 'fred', 'free robux', 'make free robux', '<?php echo uniqid(); ?> dit word gebruikt om code_id te maken in de php file')
+( 'fred', 'free robux', 'make free robux', '<?php echo uniqid(); ?> dit word gebruikt om code_id te maken in de php file')
