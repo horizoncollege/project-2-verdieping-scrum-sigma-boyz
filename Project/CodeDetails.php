@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <div class="w-100 p-5 " style="background-color:#533E6D ; height:700px;">
-                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">Paste your code here</h1>
+                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code stays here</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
                             <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
