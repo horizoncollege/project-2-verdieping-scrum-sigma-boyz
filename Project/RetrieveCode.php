@@ -1,3 +1,50 @@
+<?php
+
+session_start();
+
+$host = 'localhost';
+$db   = 'project_pastebin';
+$user = 'project_pastebin';
+$pass = 'Pr0ject';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+// shows version of the database
+try {
+  $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+  echo 'error connecting to database :( on line : ' . $e->getMessage();
+}
+
+$stmt = $pdo->prepare("SELECT * FROM code_table");
+$stmt->execute();
+$film_array = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+function echoCode()
+{
+    global $film_array;
+    foreach ($film_array as $key) {
+        echo
+        '<tr>
+            <td>';
+        echo $key->code_title;
+        echo '</td>
+            <td><a class="fw-bold" href="codeDetails.php?id=';
+        echo $key->code_id;
+        echo '">';
+        echo $key->code_author;
+        echo '</a></td>
+        </tr>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,25 +68,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="fw-bold navbar-brand" href="index.php" style="color:white;margin-right:35%;">TotalCode B.V.</a>
-        <div>
-          <a class="fw-bold navbar-brand" href="SendCode.php" style="color:white;">Send Code</a>
-          <a class="fw-bold navbar-brand" href="SendCode.php" style="color:white;">|</a>
-          <a class="fw-bold navbar-brand" href="RetrieveCode.php" style="color:white;text-decoration:underline">Retrieve Code</a>
-        </div>
-
+        <a class="fw-bold navbar-brand" href="index.php" style="color:white;">Total Code B.V.</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 650px;">
+          <li class="nav-item">
+            <a class="fw-bold nav-link" href="SendCode.php" style="color:white;">Send Code</a>
+          </li>
+          <li class="nav-item">
+            <a class="fw-bold nav-link" style="color:white;">|</a>
+          </li>
+          <li class="nav-item">
+            <a class="fw-bold nav-link" href="RetrieveCode.php" style="color:white;text-decoration:underline">Retrieve Code</a>
+          </li>
+        </ul>
       </div>
-    </div>
-
     </div>
   </nav>
   <div class="col-sm-1">
-  </div>
-  <div class="col-sm-10">
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 18%; background-color:#2A1C3D; color:white;">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
   </div>
   <div class="col-sm-10">
     <table class="table table-bordered" style="background-color:#47365B; color:white; margin-left:10%;">
@@ -57,16 +101,7 @@
           Code title:
         </th>
         <th>Made by:</th>
-        <tr>
-          <td>
-            <a class="fw-bold" href="Codedetails.php" style="color:white; text-decoration:none;">Highlights</a>
-
-          </td>
-          <td>
-            <a class="fw-bold" href="Codedetails.php" style="color:white; text-decoration:none;">Henk</a>
-          </td>
-
-        </tr>
+         <?php echoCode() ?>
 
       </tbody>
     </table>
