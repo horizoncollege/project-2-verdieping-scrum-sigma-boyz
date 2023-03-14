@@ -1,3 +1,50 @@
+<?php
+
+session_start();
+
+$host = 'localhost';
+$db   = 'project_pastebin';
+$user = 'project_pastebin';
+$pass = 'Pr0ject';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+// shows version of the database
+try {
+  $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+  echo 'error connecting to database :( on line : ' . $e->getMessage();
+}
+
+$stmt = $pdo->prepare("SELECT * FROM code_table");
+$stmt->execute();
+$film_array = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+function echoCode()
+{
+    global $film_array;
+    foreach ($film_array as $key) {
+        echo
+        '<tr>
+            <td>';
+        echo $key->code_title;
+        echo '</td>
+            <td><a class="fw-bold" href="codeDetails.php?id=';
+        echo $key->code_id;
+        echo '">';
+        echo $key->code_author;
+        echo '</a></td>
+        </tr>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,13 +101,7 @@
           Code title:
         </th>
         <th>Made by:</th>
-        <tr>
-          <th scope="row">Highlights</th>
-          <td>
-            <a class="fw-bold" href="Codedetails.php" style="color:white; text-decoration:none;">Henk</a>
-          </td>
-
-        </tr>
+         <?php echoCode() ?>
 
       </tbody>
     </table>
