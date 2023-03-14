@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12 mt-3" style="display: flex; justify-content: center;">
-                            <button type="button" id="submit-button" class="fw-bold" style="background-color:#533E6D; color:white; width:100%; align-items:center;">Post code</button>
+                            <button type="button" id="submit-button" class="fw-bold" style="background-color:#533E6D; color:white; border-color:white; width:100%; align-items:center;">Post code</button>
                         </div>
                     </div>
                 </div>
@@ -108,9 +108,9 @@
             // Highlight de code
             $(document).ready(function() {
                 var code = $('#code').text()
-                hljs.highlight('html'.code);
+                hljs.highlight('php'.code);
                 hljs.highlight('css', code);
-                hljs.highlight('php', code);
+                hljs.highlight('html', code);
                 hljs.highlight('sql', code);
             });
         </script>

@@ -5,10 +5,13 @@
 	<title>Highlighted code</title>
 	<!-- Voeg hier eventuele CSS-bestanden toe voor het highlighten van code -->
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
-	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<?php
+
+header('Refresh:5; url=Sendconfirm.php');
+?>
 	<?php
 	// Haal de code op die verstuurd is vanaf de eerste pagina
 	if (isset($_POST['code'])) {
