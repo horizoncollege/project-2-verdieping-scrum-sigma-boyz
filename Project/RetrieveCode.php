@@ -1,3 +1,55 @@
+<?php
+
+$host = 'localhost';
+$db = 'project_pastebin';
+$user = 'bit_academy';
+$pass = 'bit_academy';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+  $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+  throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}
+
+$stmt = $pdo->prepare("SELECT * FROM code_table");
+$stmt->execute();
+$code_array = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+if (isset($_GET['search'])) {
+  $zoekterm = $_GET['search'];
+  $stmtsearch = $pdo->prepare("SELECT * FROM code_table WHERE code_title LIKE ? OR code_author LIKE ?");
+  $stmtsearch->execute(["%$zoekterm%", "%$zoekterm%"]);
+  $code_array = $stmtsearch->fetchAll(PDO::FETCH_OBJ);
+}
+
+function zoektable($code_array) {
+  foreach ($code_array as $key) {
+    echo
+    '<tr>
+      <td>';
+    echo $key->code_title;
+    echo '</td>
+      <td>';
+    echo $key->code_author;
+    echo '</td>
+      <td><a href="CodeDetails.php?id=';
+    echo $key->code_id;
+    echo '">Zie code</a></td>
+  </tr>';
+  }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +59,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="Index.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <title>Document</title>
+  <title>Searching...</title>
 </head>
 
 <body style="background-color: #392A4D;">
@@ -38,31 +90,34 @@
   </nav>
   <div class="col-sm-1">
   </div>
+  <br>
+
+
+
+
+
+  <form id="zoek" method="get" action="RetrieveCode.php">
+    <input type="text" name="search" placeholder="Search the database">
+    <input type="submit" value="search">
+  </form>
+
+
+
+
+  <br>
   <div class="col-sm-10">
     <table class="table table-bordered" style="background-color:#47365B; color:white; margin-left:10%;">
-      <thead>
-        ...
-      </thead>
-      <tbody>
-        <tr class="table-active">
-          ...
-        </tr>
-        <tr>
-          ...
-        </tr>
-        <th>
-          Code title:
-        </th>
-        <th>Made by:</th>
-        <tr>
-          <th scope="row">Highlights</th>
-          <td>
-            <a class="fw-bold" href="Codedetails.php" style="color:white; text-decoration:none;">Henk</a>
-          </td>
+      <tr>
+        <th>Code title</th>
+        <th>Code author</th>
+        <th>More details</th>
+      </tr>
 
-        </tr>
-
-      </tbody>
+      <tr>
+        <?php 
+        zoektable($code_array);
+        ?>
+      </tr>
     </table>
   </div>
   <div class="col-sm-1">
