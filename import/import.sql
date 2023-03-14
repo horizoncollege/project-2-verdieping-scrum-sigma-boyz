@@ -14,4 +14,5 @@ AUTO_INCREMENT=1000;
 
 INSERT INTO code_table ( code_author, code_title, code_function, code)
 VALUES
-( 'fred', 'free robux', 'make free robux', '<?php echo uniqid(); ?> dit word gebruikt om code_id te maken in de php file')
+( 'fred', 'free robux', 'make free robux', '<?php echo uniqid(); ?> dit word gebruikt om code_id te maken in de php file'),
+( 'henkie spenkie', 'Ram downloader', 'Increase your ram', '<?php get password; echo: "hacked lol" ?> ')
