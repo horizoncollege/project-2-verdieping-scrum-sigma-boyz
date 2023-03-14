@@ -23,9 +23,7 @@ try {
 }
 
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +62,20 @@ try {
             </div>
         </div>
     </nav>
+    <code>
+        <div class="container-fluid" style="margin-top: 2%;">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="w-100 p-5 " style="background-color:#533E6D; height:700px;">
+                        <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">Voer hier de code in:</h1>
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86;" placeholder="Plak hier de code" id="code-input" name="code"></textarea>
+                                <label class="fw-bold" for="code-input" style="color:white;">Code</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-3" style="display: flex; justify-content: center;">
+                            <button type="button" id="submit-button" class="fw-bold" style="background-color:#533E6D; color:white; border-color:white; width:100%; align-items:center;">Post code</button>
                         </div>
                     </div>
                 </div>
@@ -71,30 +83,64 @@ try {
                 </div>
                 <div class="col-sm-4">
                     <div class="w-100 p-5" style="background-color:#533E6D; height:700px;">
-                        <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Name:</label>
-                        <input type="text" name="Author" id="name" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
-                        <br>
-                        <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
-                        <input type="text" name="Title" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
-                        <br>
-                        <div class="form-floating">
-                            <textarea name="CodeFuntion" class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Funtion</label>
-                        </div>
+                        <form>
+                            <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Name:</label>
+                            <input type="text" id="inputPassword5" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                            <br>
+                            <label for="CodeTitle" class="fw-bold form-label" style="color:white;">Code title:</label>
+                            <input type="text" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                            <br>
+                            <div class="form-floating">
+                                <textarea class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Function</label>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid" style="margin-top: 2%;">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="col-sm-12">
-                        <input class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;" type="submit" value="Post code" id="PostCode" name="PostCode">
-                            <!-- <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Post code</button> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </form>
+        </div>
+        <!-- Voeg hier eventuele JavaScript-bestanden toe -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#code-input').keypress(function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        $('#submit-button').click();
+                    }
+                });
+
+                $('#submit-button').click(function() {
+                    var code = $('#code-input').val();
+                    if (code.trim() == '') {
+                        alert('Voer een code in.');
+                        return;
+                    }
+                    var form = $('<form>', {
+                        'action': 'pagina2.php',
+                        'method': 'POST'
+                    }).append($('<input>', {
+                        'type': 'hidden',
+                        'name': 'code',
+                        'value': code
+                    }));
+                    $('body').append(form);
+                    form.submit();
+                });
+            });
+        </script>
+        <script>
+            // Highlight de code
+            $(document).ready(function() {
+                var code = $('#code').text()
+                hljs.highlight('php'.code);
+                hljs.highlight('css', code);
+                hljs.highlight('html', code);
+                hljs.highlight('sql', code);
+            });
+        </script>
+    </code>
 </body>
 
 </html>
