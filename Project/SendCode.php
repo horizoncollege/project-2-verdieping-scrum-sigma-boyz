@@ -70,8 +70,8 @@ try {
                         <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">Voer hier de code in:</h1>
                         <div class="col-sm-12">
                             <div class="form-floating">
-                                <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86;" placeholder="Plak hier de code" id="code-input" name="code"></textarea>
-                                <label class="fw-bold" for="code-input" style="color:white;">Code</label>
+                                <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="code" name="code"></textarea>
+                                <label class="fw-bold" for="code" style="color:white;">Code</label>
                             </div>
                         </div>
                         <div class="col-sm-12 mt-3" style="display: flex; justify-content: center;">
@@ -85,14 +85,14 @@ try {
                     <div class="w-100 p-5" style="background-color:#533E6D; height:700px;">
                         <form>
                             <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Name:</label>
-                            <input type="text" id="inputPassword5" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                            <input type="text" name="Author" id="name" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
                             <br>
-                            <label for="CodeTitle" class="fw-bold form-label" style="color:white;">Code title:</label>
-                            <input type="text" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                            <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
+                            <input type="text" name="Title" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
                             <br>
                             <div class="form-floating">
-                                <textarea class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Function</label>
+                                <textarea name="CodeFuntion" class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Funtion</label>
                             </div>
                         </form>
                     </div>
