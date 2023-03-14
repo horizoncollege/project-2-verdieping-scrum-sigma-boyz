@@ -1,3 +1,60 @@
+<?php
+$id = $_GET['id'];
+session_start();
+
+$host = 'localhost';
+$db   = 'project_pastebin';
+$user = 'project_pastebin';
+$pass = 'Pr0ject';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+// shows version of the database
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    echo 'error connecting to database :( on line : ' . $e->getMessage();
+}
+
+$query = $pdo->prepare('SELECT * FROM code_table WHERE code_id = :code_id');
+$query->bindParam(':code_id', $id);
+$query->execute();
+
+$code = $query->fetch(PDO::FETCH_OBJ);
+
+// these functions let us show all the info gathered from the db
+function getAuthor()
+{
+    global $code;
+    return $code->code_author;
+}
+
+function getTitle()
+{
+    global $code;
+    return $code->code_title;
+}
+
+function getFunction()
+{
+    global $code;
+    return $code->code_function;
+}
+
+function getCode()
+{
+    global $code;
+    return $code->code;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,11 +97,11 @@
         <div class="row">
             <div class="col-sm-5">
                 <div class="w-100 p-5 " style="background-color:#533E6D ; height:700px;">
-                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">Paste your code here</h1>
+                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code stays here</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
-                            <textarea class="fw-bold form-control" style="height: 580px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label class="fw-bold"for="floatingTextarea" style="color:white;">Code</label>
+                        <p style="color:white"><?php echo getCode(); ?></p>
+                        <label class="fw-bold"for="floatingTextarea" style="color:white;">Code</label>
                         </div>
                     </div>
                 </div>
@@ -54,27 +111,27 @@
             <div class="col-sm-4">
                 <div class="w-100 p-5" style="background-color:#533E6D; height:700px;">
                     <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Name:</label>
-                    <input type="text" id="inputPassword5" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                    <p style="color:white"><?php echo getAuthor(); ?></p>
                     <br>
                     <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
-                    <input type="text" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                    <p style="color:white"><?php echo getTitle(); ?></p>
                     <br>
                     <div class="form-floating">
-                        <textarea class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Funtion</label>
+                    <p style="color:white"><?php echo getFunction(); ?></p>
+                            <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Funtion</label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid" style="margin-top: 2%;">
-            <div class="row">
-                <div class="col-sm-12">
+            <div class="container-fluid" style="margin-top: 2%;">
+                <div class="row">
                     <div class="col-sm-12">
-                        <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
+                        <div class="col-sm-12">
+                            <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 </body>
 
 </html>

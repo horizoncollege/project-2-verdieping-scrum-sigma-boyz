@@ -4,6 +4,7 @@ $host = 'localhost';
 $db = 'project_pastebin';
 $user = 'bit_academy';
 $pass = 'bit_academy';
+
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -17,6 +18,7 @@ try {
   $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int)$e->getCode());
+
 }
 
 $stmt = $pdo->prepare("SELECT * FROM code_table");
@@ -48,6 +50,7 @@ function zoektable($code_array) {
 }
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -91,19 +94,10 @@ function zoektable($code_array) {
   <div class="col-sm-1">
   </div>
   <br>
-
-
-
-
-
   <form id="zoek" method="get" action="RetrieveCode.php">
     <input type="text" name="search" placeholder="Search the database">
     <input type="submit" value="search">
   </form>
-
-
-
-
   <br>
   <div class="col-sm-10">
     <table class="table table-bordered" style="background-color:#47365B; color:white; margin-left:10%;">
@@ -118,6 +112,7 @@ function zoektable($code_array) {
         zoektable($code_array);
         ?>
       </tr>
+
     </table>
   </div>
   <div class="col-sm-1">
