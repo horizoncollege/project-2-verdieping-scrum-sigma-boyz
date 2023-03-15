@@ -3,9 +3,9 @@
 session_start();
 
 $host = 'localhost';
-$db = 'project_pastebin';
-$user = 'bit_academy';
-$pass = 'bit_academy';
+$db   = 'project_pastebin';
+$user = 'project_pastebin';
+$pass = 'Pr0ject';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -15,7 +15,7 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-// shows version of the database    
+// shows version of the database
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
@@ -104,7 +104,7 @@ try {
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#code').keypress(function(event) {
+                $('#code-input').keypress(function(event) {
                     if (event.keyCode === 13) {
                         event.preventDefault();
                         $('#submit-button').click();
@@ -112,7 +112,7 @@ try {
                 });
 
                 $('#submit-button').click(function() {
-                    var code = $('#code').val();
+                    var code = $('#code-input').val();
                     if (code.trim() == '') {
                         alert('Voer een code in.');
                         return;
