@@ -1,3 +1,28 @@
+<?php
+
+session_start();
+
+$host = 'localhost';
+$db   = 'project_pastebin';
+$user = 's168308_Project';
+$pass = 'Pr0ject';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+// shows version of the database
+try {
+  $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+  echo 'error connecting to database :( on line : ' . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +32,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="Index.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <title>Document</title>
+  <title>Home</title>
 </head>
 
 <body style="background-color: #392A4D;">
@@ -21,7 +46,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.php" style="color:white;">TotalCode B.V.</a>
+        <a class="fw-bold navbar-brand" href="index.php" style="color:white;">TotalCode B.V.</a>
       </div>
   </nav>
   <div class="container-fluid" style="margin-top: 15%;">
