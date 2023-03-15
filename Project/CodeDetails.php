@@ -100,7 +100,9 @@ function getCode()
                     <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
-                            <p style="color:white"><?php echo getCode(); ?></p>
+                            <pre>
+                                <p style="color:white"><?php echo getCode(); ?></p>
+                            </pre>
                         </div>
                     </div>
                 </div>
