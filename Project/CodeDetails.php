@@ -100,8 +100,7 @@ function getCode()
                     <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code stays here</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
-                        <p style="color:white"><?php echo getCode(); ?></p>
-                        <label class="fw-bold"for="floatingTextarea" style="color:white;">Code</label>
+                            <p style="color:white"><?php echo getCode(); ?></p>
                         </div>
                     </div>
                 </div>
@@ -116,22 +115,21 @@ function getCode()
                     <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
                     <p style="color:white"><?php echo getTitle(); ?></p>
                     <br>
-                    <div class="form-floating">
+
+                    <label for="inputPassword5" class="fw-bold" style="color:white;">Code Funtion</label>
                     <p style="color:white"><?php echo getFunction(); ?></p>
-                            <label for="floatingTextarea" class="fw-bold" style="color:white;">Code Funtion</label>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="container-fluid" style="margin-top: 2%;">
-                <div class="row">
+        </div>
+        <div class="container-fluid" style="margin-top: 2%;">
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="col-sm-12">
-                        <div class="col-sm-12">
-                            <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
-                        </div>
+                        <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
                     </div>
                 </div>
             </div>
+        </div>
 </body>
 
 </html>
