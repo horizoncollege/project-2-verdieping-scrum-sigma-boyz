@@ -97,9 +97,7 @@ try {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="col-sm-12">
-                            <input class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;" type="submit" value="Post code" id="PostCode" name="PostCode">
-                            <!-- <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Post code</button> -->
-                        </div>
+                            <input class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;" type="submit" value="Post code" id="PostCode" name="PostCode">                        </div>
                     </div>
                 </div>
             </div>

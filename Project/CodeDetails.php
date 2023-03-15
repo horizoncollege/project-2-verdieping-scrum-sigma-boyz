@@ -3,7 +3,7 @@ $id = $_GET['id'];
 session_start();
 
 $host = 'localhost';
-$db = 'project_pastebin';
+$db   = 'project_pastebin';
 $user = 'bit_academy';
 $pass = 'bit_academy';
 $charset = 'utf8mb4';
@@ -78,7 +78,7 @@ function getCode()
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="fw-bold navbar-brand" href="index.php" style="color:white;">Total Code B.V.</a>
+                <a class="fw-bold navbar-brand" href="index.php" style="color:white;">TotalCode B.V.</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 650px;">
                     <li class="nav-item">
                         <a class="fw-bold nav-link" href="SendCode.php" style="color:white;">Send Code</a>
@@ -97,7 +97,7 @@ function getCode()
         <div class="row">
             <div class="col-sm-5">
                 <div class="w-100 p-5 " style="background-color:#533E6D ; height:700px;">
-                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code stays here</h1>
+                    <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
                             <p style="color:white"><?php echo getCode(); ?></p>
@@ -115,21 +115,24 @@ function getCode()
                     <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
                     <p style="color:white"><?php echo getTitle(); ?></p>
                     <br>
-
                     <label for="inputPassword5" class="fw-bold" style="color:white;">Code Funtion</label>
                     <p style="color:white"><?php echo getFunction(); ?></p>
+
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin-top: 2%;">
-            <div class="row">
+    </div>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-sm-12">
                 <div class="col-sm-12">
-                    <div class="col-sm-12">
+                    <form action="RetrieveCode.php">
                         <button class="fw-bold" style="background-color:#533E6D; color:white; width:100%; height:70px;align-items:center;">Back to Overview</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
