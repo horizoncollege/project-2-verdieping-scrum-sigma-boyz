@@ -77,14 +77,6 @@ function getCode()
     .highlight-html {
         color: red;
     }
-
-   /* .highlight-php {
-        color: #e6f1f6;
-    }
-
-    .highlight-sql {
-        color: #f6e1e6;
-        */
 </style>
 
 <body style="background-color: #392A4D;">
@@ -132,22 +124,12 @@ function getCode()
                             <button id="highlight-button" class="btn btn-primary">Highlight Code</button>
                             <script>
                                 document.getElementById("highlight-button").addEventListener("click", function() {
-                                    // Zoek alle HTML-, PHP- en SQL-elementen op de pagina en geef ze elk een aparte kleur
-                                    var htmlElements = document.querySelectorAll('script[type="text/html"]');
-                                    for (var i = 0; i < htmlElements.length; i++) {
-                                        htmlElements[i].classList.toggle('highlight-html');
-                                    }
-
-                                    var phpElements = document.querySelectorAll('pre code[class*="language-php"]');
-                                    for (var i = 0; i < phpElements.length; i++) {
-                                        phpElements[i].classList.toggle('highlight-php');
-                                    }
-
-                                    var sqlElements = document.querySelectorAll('pre code[class*="language-sql"]');
-                                    for (var i = 0; i < sqlElements.length; i++) {
-                                        sqlElements[i].classList.toggle('highlight-sql');
-                                    }
-                                });
+                                            // Zoek alle HTML-, PHP- en SQL-elementen op de pagina en geef ze elk een aparte kleur
+                                            var htmlElements = document.querySelectorAll('script[type="text/html"]');
+                                            for (var i = 0; i < htmlElements.length; i++) {
+                                                htmlElements[i].classList.toggle('highlight-html');
+                                            }
+                                        });
                             </script>
                         </div>
                     </div>
