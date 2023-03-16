@@ -67,6 +67,26 @@ function getCode()
     <title>Document</title>
 </head>
 
+<style>
+    .code {
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+    }
+
+    .highlight-html {
+        color: red;
+    }
+
+   /* .highlight-php {
+        color: #e6f1f6;
+    }
+
+    .highlight-sql {
+        color: #f6e1e6;
+        */
+</style>
+
 <body style="background-color: #392A4D;">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
@@ -96,13 +116,39 @@ function getCode()
     <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
             <div class="col-sm-5">
-                <div class="w-100 p-5 " style="background-color:#533E6D ; height:700px;">
+                <div class="w-100 p-5 " style="background-color:#533E6D ;">
                     <h1 class="fw-bold text-white " style="font-size: 20px; margin-left: 35%;">The code</h1>
                     <div class="col-sm-12">
                         <div class="form-floating">
                             <pre>
-                                <p style="color:white"><?php echo getCode(); ?></p>
-                            </pre>
+                                <p style="color:white">
+                                <?php
+                                echo "<script class='code' type='text/html'>";
+                                echo htmlentities(getCode());
+                                echo "</script>";
+                                ?>
+                                </p>
+                                </pre>
+                            <button id="highlight-button" class="btn btn-primary">Highlight Code</button>
+                            <script>
+                                document.getElementById("highlight-button").addEventListener("click", function() {
+                                    // Zoek alle HTML-, PHP- en SQL-elementen op de pagina en geef ze elk een aparte kleur
+                                    var htmlElements = document.querySelectorAll('script[type="text/html"]');
+                                    for (var i = 0; i < htmlElements.length; i++) {
+                                        htmlElements[i].classList.toggle('highlight-html');
+                                    }
+
+                                    var phpElements = document.querySelectorAll('pre code[class*="language-php"]');
+                                    for (var i = 0; i < phpElements.length; i++) {
+                                        phpElements[i].classList.toggle('highlight-php');
+                                    }
+
+                                    var sqlElements = document.querySelectorAll('pre code[class*="language-sql"]');
+                                    for (var i = 0; i < sqlElements.length; i++) {
+                                        sqlElements[i].classList.toggle('highlight-sql');
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
