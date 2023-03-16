@@ -81,10 +81,10 @@ try {
                 <div class="col-sm-4">
                     <div class="w-100 p-5" style="background-color:#533E6D; height:700px;">
                         <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Name:</label>
-                        <input type="text" name="Author" id="name" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                        <input type="text" name="Author" id="name" class="form-control" style="background-color:#684F86;color:white;" aria-describedby="passwordHelpBlock">
                         <br>
                         <label for="inputPassword5" class="fw-bold form-label" style="color:white;">Code title:</label>
-                        <input type="text" name="Title" id="CodeTitle" class="form-control" style="background-color:#684F86;" aria-describedby="passwordHelpBlock">
+                        <input type="text" name="Title" id="CodeTitle" class="form-control" style="background-color:#684F86; color:white;" aria-describedby="passwordHelpBlock">
                         <br>
                         <div class="form-floating">
                             <textarea name="CodeFuntion" class="fw-bold form-control" style="height:400px; background-color:#684F86; color:white;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
